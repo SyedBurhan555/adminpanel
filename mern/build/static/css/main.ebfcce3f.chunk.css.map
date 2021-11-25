@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack://src/app.css"],"names":[],"mappings":"AAAA,SAEI,qBACJ,CACA,QACI,cACJ,CACA,UACI,gBACJ","file":"main.ebfcce3f.chunk.css","sourcesContent":[".MyClass{\r\n    margin: auto;\r\n    margin-top: 40px;\r\n}\r\n.MyFont{\r\n    font-size: 20px;\r\n}\r\n.MyMargin{\r\n    margin-top: 12rem;\r\n}\r\n"]}
