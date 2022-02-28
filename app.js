@@ -26,6 +26,10 @@ app.use("/api/orders", OrderRoutes);
 app.use("/api/checkouts", stripeRoutes);
 
 
+app.use(express.static(path.join(__dirname,"/admin/build")))
+
+
+
 app.listen(PORT, () => {
   console.log(`Connection is setup on ${PORT}`);
 });
