@@ -2,22 +2,30 @@ const express = require("express");
 const app = express();
 const PORT = process.env.PORT || 5000;
 const dotenv = require("dotenv");
-const cookieParser = require("cookie-parser");
+const authRoutes = require("./routers/auth");
+const userRoutes = require("./routers/user");
+const ProductRoutes = require("./routers/product");
+const OrderRoutes = require("./routers/order");
+const CartRoutes = require("./routers/cart");
+const stripeRoutes = require("./routers/stripe");
+const cors = require("cors");
+const path = require("path")
 
-app.use(cookieParser())
-app.use(express.json())
+app.use(express.json());
 
-dotenv.config({path:"./config.env"})
-require("./db/conn.js")
+dotenv.config({ path: "./config.env" });
+require("./db/conn.js");
 
-app.use(require("./routers/auth.js"))
+app.use(cors());
 
-if(process.env.NODE_ENV === "production"){
-  app.use(express.static("mern/build"))
-}
+app.use("/api/auth", authRoutes);
+app.use("/api/users", userRoutes);
+app.use("/api/products", ProductRoutes);
+app.use("/api/carts", CartRoutes);
+app.use("/api/orders", OrderRoutes);
+app.use("/api/checkouts", stripeRoutes);
 
 
-
-app.listen(PORT,()=>{
-  console.log(`Connection is setup on ${PORT}`)
-})
+app.listen(PORT, () => {
+  console.log(`Connection is setup on ${PORT}`);
+});
