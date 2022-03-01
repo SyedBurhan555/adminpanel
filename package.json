@@ -4,8 +4,13 @@
   "description": "pratice",
   "main": "index.js",
   "scripts": {
-    "start": "node app.js",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install npm && run build"
+        "build": "cd mern && npm run build",
+        "install-mern": "cd client && npm install",
+        "heroku-postbuild": "npm run install-client && npm run build",
+        "server": "nodemon app.js",
+        "develop": "concurrently --kill-others-on-fail \"npm run server\" \"npm run start --prefix client\"",
+        "start": "concurrently --kill-others-on-fail \"npm run server\" \"npm run start --prefix client\""
+   
   },
   "engines": {
     "node": "10.16.0"
